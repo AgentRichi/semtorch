@@ -2,7 +2,7 @@ from fastdotai/fastai:latest
 
 COPY --chown=${NB_UID}:${NB_GID} requirements.txt /tmp/
 
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 libcurl4-openssl-dev  -y
 
 RUN pip install -r /tmp/requirements.txt
 
