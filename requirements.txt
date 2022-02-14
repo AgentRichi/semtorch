@@ -2,3 +2,4 @@ timm
 SemTorch
 pytorch_toolbelt
 Cython
+fiftyone
