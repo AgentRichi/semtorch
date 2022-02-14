@@ -2,13 +2,12 @@ from fastdotai/fastai:latest
 
 COPY --chown=${NB_UID}:${NB_GID} requirements.txt /tmp/
 
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 libcurl4-openssl-dev  -y
+#libraries
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 libcurl3  -y
 
+#Install required python packages
 RUN pip install -r /tmp/requirements.txt
-
-#CocoAPI
 RUN pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
 
-# add local repo
-RUN mkdir /workspace/fastbook
-COPY --chown=$NB_UID . /workspace/semtorch
+#Git Global Config
+COPY --chown=$NB_UID .gitconfig /etc/gitconfig
